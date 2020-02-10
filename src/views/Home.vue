@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <el-container>
+    
+      <el-header>
+        <h1>APCOS应用服务</h1>
+      </el-header>
+      <el-main>
+        <el-container>
+          <el-aside width="300px">
+            <side-menu></side-menu>
+          </el-aside>
+          <el-main>
+            <router-view/>
+          </el-main>
+        </el-container>
+        
+      </el-main>
+  </el-container>
+
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import sideMenu from '../components/sideMenu'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    sideMenu
   }
 }
 </script>
