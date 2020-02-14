@@ -5,6 +5,9 @@ import AppManager from '../views/app/AppManager'
 import editApp from '../views/app/editApp'
 import pageManager from '../views/page/pageManager'
 import editPage from '../views/page/editPage'
+import modelManager from '../views/model/modelManager'
+import editModel from '../views/model/editModel'
+import pageConfig from '../views/pageConfig'
 
 Vue.use(VueRouter)
 
@@ -46,16 +49,31 @@ const routes = [
         component:editPage,
         props:true
       },
+      {
+        path:'/modelManager',
+        name:'modelManager',
+        component:modelManager
+      },
+      {
+        path:'/createModel',
+        name:'createModel',
+        component:editModel
+      },
+      {
+        path:'/editModel/:id',
+        name:'editModel',
+        component:editModel,
+        props:true
+      },
+      {
+        path:'/pageConfig/:id',
+        name:'pageConfig',
+        component:pageConfig,
+        props:true
+      },
     ]
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  
 ]
 
 const router = new VueRouter({

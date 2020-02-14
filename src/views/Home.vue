@@ -6,7 +6,7 @@
       </el-header>
       <el-main>
         <el-container>
-          <el-aside width="300px">
+          <el-aside width="300px"  v-if="$route.name!=='pageConfig'">
             <side-menu></side-menu>
           </el-aside>
           <el-main>

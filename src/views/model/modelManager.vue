@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-form :inline="true" @submit.native.prevent="search" :model="form">
-            <el-form-item label="页面名称">
+            <el-form-item label="模板名称">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item label="状态">
@@ -17,23 +17,22 @@
                 <el-button native-type="submit">查询</el-button>
             </el-form-item>
             <el-form-item>
-                <el-button @click="$router.push('/createPage')">创建页面</el-button>
+                <el-button @click="$router.push('/createModel')">新增模板</el-button>
             </el-form-item>
         </el-form>
         <el-table :data="listData" :height="tableHeight" ref="table">
             <el-table-column type="index" label="序号" width="100"></el-table-column>
-            <el-table-column prop="name" label="页面名称"></el-table-column>
-            <el-table-column prop="app" label="所属应用"></el-table-column>
-            <el-table-column prop="fileName" label="页面文件名"></el-table-column>
+            <el-table-column prop="name" label="模板名称"></el-table-column>
+            <el-table-column prop="icon" label="模板图标"></el-table-column>
             <el-table-column prop="createTime" label="创建时间"></el-table-column>
             <el-table-column prop="state" label="状态"></el-table-column>
             <el-table-column label="操作" width="400" align="center">
-                <template slot-scope="scope"> 
-                    <el-button size="small" type="primary" @click="$router.push(`/editPage/${scope.row.name}`)">修改</el-button>
-                    <el-button size="small" type="danger" @click="$router.push(`/pageConfig/${scope.row.name}`)">配置页面</el-button>
-                    <el-button size="small" type="danger" @click="remove(scope.row)">删除</el-button>
-                </template>
-            </el-table-column>
+                    <template slot-scope="scope"> 
+                        <el-button size="small" type="primary" @click="$router.push(`/editModel/${scope.row.name}`)">修改</el-button>
+                        <el-button size="small" type="danger" @click="putAway(scope.row)">上架</el-button>
+                        <el-button size="small" type="danger" @click="remove(scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
         </el-table>
         <div class="page">
             <el-pagination
