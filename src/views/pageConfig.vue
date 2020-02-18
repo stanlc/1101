@@ -22,6 +22,7 @@
                     <page-editor></page-editor>
                 </el-col>
                 <el-col :span="4">
+                    <widgets-settings></widgets-settings>
                 </el-col>
             </el-row>
         </el-main>
@@ -31,12 +32,14 @@
 <script>
 import pageEditor from '../views/pageEditor'
 import widgetsArea from '../views/widgetsArea'
-import draggable from 'vuedraggable'
+import widgetsSettings from '../views/widgetsSettings'
+import draggable from '../assets/vuedraggable'
     export default {
         components: {
             pageEditor,
             draggable,
             widgetsArea,
+            widgetsSettings,
         },
         
     }
