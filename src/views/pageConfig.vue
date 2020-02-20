@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import pageEditor from '../views/pageEditor'
+// import pageEditor from '../views/pageEditor'
+import pageEditor from '../views/pageEditor-2'
 import widgetsArea from '../views/widgetsArea'
 import widgetsSettings from '../views/widgetsSettings'
 import draggable from '../assets/vuedraggable'

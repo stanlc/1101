@@ -32,6 +32,7 @@
                 <el-collapse>
                     <el-collapse-item v-for="(item,index) in $store.state.rows" :key="index" :title="'第'+(index+1)+'行'">
                         <el-collapse-item v-for="(zoneItem,zoneIndex) in item.zones" :key="zoneIndex" :title="'第'+(zoneIndex+1)+'列'" style="margin-left:10px">
+                            <col-setter :value="{data:zoneItem.justify,label:'对齐方式'}" @myEvent="(v)=>{zoneItem.justify=v}"></col-setter>
                             <el-collapse-item v-for="(widgetItem,widgetIndex) in zoneItem.widgets" :key="widgetIndex" :title="(widgetIndex+1)+'.'+widgetItem.name" style="margin-left:15px">
                                 <el-form v-for="(keys,keyIndex) in Object.keys(widgetItem.data.style)" :key="keyIndex" >
                                     <!-- <el-form-item :label="keys">
@@ -66,6 +67,9 @@
 import textSetter from '../components/setters/attrs/textSetter'
 import btnTextSetter from '../components/setters/attrs/btnTextSetter'
 import colorSetter from '../components/setters/style/colorSetter'
+import colSetter from '../components/setters/style/colSetter'
+import btnSizeSetter from '../components/setters/attrs/btnSizeSetter'
+import optionsSetter from '../components/setters/attrs/optionsSetter'
     export default {
         data() {
             return {
@@ -73,6 +77,8 @@ import colorSetter from '../components/setters/style/colorSetter'
                 settingList:[
                     'text',
                     'btnText',
+                    'btnSize',
+                    'options',
                 ]
             }
         },
@@ -80,6 +86,9 @@ import colorSetter from '../components/setters/style/colorSetter'
             textSetter,
             btnTextSetter,
             colorSetter,
+            btnSizeSetter,
+            colSetter,
+            optionsSetter,
         },
         methods: {
             keyTranslate(value) {
@@ -92,6 +101,9 @@ import colorSetter from '../components/setters/style/colorSetter'
                         break;
                     case 'color':
                         return '文字颜色'
+                        break;
+                    case 'btnSize':
+                        return '按钮尺寸'
                         break;
                     default:
                         return value

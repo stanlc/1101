@@ -1,6 +1,6 @@
 <template>
     <div>
-        <draggable v-model="widgets" :options="{group:{name:'widgets',pull:'clone',put:false}}" @end="drag=false">
+        <draggable v-model="widgets" :options="{group:{name:'widgets',pull:'clone',put:false}}" @end="drag=false" :sort="false">
             <div class="cursor--move" v-for="(item,itemIndex) in widgets" :key="itemIndex" >
                 <i :class="item.icon"></i>
                 <p>{{item.name}}</p>
@@ -25,8 +25,8 @@ import draggable from '../assets/vuedraggable'
                     },
                     {
                         name:'按钮',
-                        template:'<el-button :type="attr.btnType" :style="style">{{attr.btnText}}</el-button>',
-                        data:{attr:{btnText:'发送',btnType:'primary'},style:{color:'#fff'}},
+                        template:'<el-button :type="attr.btnType" :style="style" :size="attr.btnSize">{{attr.btnText}}</el-button>',
+                        data:{attr:{btnText:'发送',btnType:'primary',btnSize:'small'},style:{color:'#fff'}},
                         class:'hover-move',
                         icon:'el-icon-switch-button'
                     },
@@ -61,10 +61,10 @@ import draggable from '../assets/vuedraggable'
                                     },
                                 ],
                                 value:'',
-                            }
-                            
-
-                        }
+                            },
+                            style:{},
+                        },
+                        
                     }
                 ]
             }

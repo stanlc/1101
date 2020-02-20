@@ -18,11 +18,11 @@
                 <el-button @click="addRow(rowOption,cellHeight)" type="primary">新增容器</el-button>
             </el-form-item>
         </el-form>
-        <el-row :gutter="10" v-for="(row,rowIndex) in rows" :key="rowIndex">
-            <el-col v-for="(zone,zoneIndex) in row.zones" :key="zoneIndex" :md="zone.size" class="contentBox" :style="'height:'+zone.height">
-                <draggable v-model="zone.widgets" :options="{group:'widgets'}" @start="drag=true" @end="drag=false;$forceUpdate()">
+        <el-row :gutter="10" v-for="(row,rowIndex) in rows" :key="rowIndex" >
+            <el-col v-for="(zone,zoneIndex) in row.zones" :key="zoneIndex" :md="zone.size" :class="'contentBox '+zone.justify" :style="'height:'+zone.height">
+                <draggable v-model="zone.widgets" :options="{group:'widgets'}" @start="drag=true" @end="drag=false;">
                     <!-- 拖拽组件 -->
-                    <div class="cursor--move" v-for="(item,itemIndex) in zone.widgets" :key="itemIndex"   style="display:inline-block">
+                    <div class="cursor--move" v-for="(item,itemIndex) in zone.widgets" :key="itemIndex"   style="display:inline-block;margin:10px">
                         <dynamic-components :cxt="item"></dynamic-components>
                         <!-- {{item.app}} -->
                     </div>
@@ -96,6 +96,7 @@ Vue.component('dynamicComponents',{
                 cols.forEach(colsize=>{
                     newRow.zones.push({
                         size:colsize,
+                        justify:'center',
                         height:height+'px',
                         widgets:[]
                     });
@@ -123,8 +124,17 @@ Vue.component('dynamicComponents',{
     .contentBox{
         border:1px dotted red;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+    }
+    .center{
+        justify-content: center;
+    }
+    .start{
+        justify-content: flex-start;
+    }
+    .end{
+        justify-content: flex-end;
     }
     .hover-move{
         cursor: move
